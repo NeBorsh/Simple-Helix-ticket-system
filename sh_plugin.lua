@@ -34,7 +34,7 @@ if (CLIENT) then
 			local frame = vgui.Create( "DFrame" )
 			frame:SetPos( 500, 300 )
 			frame:SetSize( 300, 110 )
-			frame:SetTitle( "Меню создания тикета / документа" )
+			frame:SetTitle(Createmenu)
 			frame:SetDeleteOnClose(true)
 			frame:SetDraggable( true )
 			frame:ShowCloseButton( true )
@@ -42,7 +42,7 @@ if (CLIENT) then
 
 			local name = vgui.Create( "DTextEntry", frame )
 			name:Dock( TOP )
-			name:SetPlaceholderText( "Название тикета / документа" )
+			name:SetPlaceholderText(ticketname)
 			function name:OnChange()
 				item_name = name:GetText()
 			end
@@ -50,14 +50,14 @@ if (CLIENT) then
 			local desc = vgui.Create( "DTextEntry", frame )
 			desc:Dock( TOP )
 			desc:DockMargin( 0, 5, 0, 0 )
-			desc:SetPlaceholderText( "Описание тикета / документа" )
+			desc:SetPlaceholderText(ticketdisc)
 			function desc:OnChange()
 				item_desc = desc:GetText()
 			end
 
 			local button = vgui.Create( "DButton", frame )
 			button:Dock( BOTTOM )
-			button:SetText( "Создать тикет / документ" )
+			button:SetText(createticket)
 			button:SetPos( 25, 50 )
 			button:SetSize( 250, 30 )
 			button.DoClick = function()
@@ -68,7 +68,7 @@ if (CLIENT) then
 				net.SendToServer()
 			end
 		else
-			ply:Notify('Вы не гос. служащий')
+			ply:Notify(gosbl)
             return true
 		end
 	end)
